@@ -1,14 +1,14 @@
 # GO_INTERVIEW_PLAN.md — Příprava na Go live coding pohovory
 
-> **Instrukce pro Claude Code:** Tento soubor je zadání i studijní plán. Postupuj po lekcích, generuj obsah do struktury níže, každou lekci ukonči cvičením s testy. Uživatel (ol1n) je zkušený Go vývojář v oblasti služeb a infrastruktury, ale concurrency primitiva se učí od základů — vysvětluj česky, kód a identifikátory anglicky. Netlač na tempo: jedna lekce = jedna session.
+> **Instrukce pro Claude Code:** Tento soubor je zadání i studijní plán. Postupuj po lekcích, generuj obsah do struktury níže, každou lekci ukonči cvičením s testy. Cílový student: zkušený Go vývojář (služby, infrastruktura), který se concurrency primitiva učí od základů — vysvětluj česky, kód a identifikátory anglicky. Netlač na tempo: jedna lekce = jedna session.
 
 ## Kontext
 
-Uživatel prošel technickým screeningem (Cloudera). Slabá místa identifikovaná z odpovědí:
+Plán cílí na témata, kde Go pohovory nejčastěji bolí — typické mezery kandidátů, kteří přicházejí ze služeb a infrastruktury:
 
-1. **Q1 (concurrency):** Odpověď utekla ke Kubernetes autoscalingu místo in-process concurrency. Chybí: worker pool, bounded parallelism, goroutine leaks, errgroup.
-2. **Q2 (context):** Timeouty OK, ale chybí cancellation propagation; špatné chápání context values ("úspora paměti").
-3. **Q3 (distribuovaná spolehlivost):** Chybí: retry + backoff + jitter, idempotency keys, circuit breaker, at-least-once + dedup, outbox pattern, saga.
+1. **Q1 (concurrency):** in-process concurrency — worker pool, bounded parallelism, goroutine leaks, errgroup. Častá past: utéct v odpovědi k infrastrukturnímu škálování (Kubernetes autoscaling) místo concurrency uvnitř procesu.
+2. **Q2 (context):** nejen timeouty — cancellation propagation, strom contextů, context values (co tam patří a co ne).
+3. **Q3 (distribuovaná spolehlivost):** retry + backoff + jitter, idempotency keys, circuit breaker, at-least-once + dedup, outbox pattern, saga.
 
 **Co už bylo probráno (nezačínej znovu, jen krátce zopakuj):**
 - Goroutiny, unbuffered/buffered channely, blokující send/receive, deadlock ("předání z ruky do ruky"), `close` + `range`, pravidlo "zavírá producent", základ `select`.
@@ -73,7 +73,7 @@ Mini-programy "co to vypíše / spadne to?": deadlock na unbuffered send (✅ u�
 
 ## Theory Q&A (interview/THEORY_QA.md)
 
-Přeformuluj původní screeningové otázky Q1–Q8 a napiš vzorové odpovědi tak, jak by je měl uživatel říct nahlas — strukturovaně, česky s anglickými termíny. Zvláštní důraz na Q1 a Q3. Přidej "věty na pohovor" (jednovětá shrnutí seniority), např.: *"Každá goroutina musí mít garantovanou cestu k ukončení."* / *"Exactly-once neexistuje — dělám at-least-once s idempotentním consumerem."*
+Napiš screeningové otázky Q1–Q8 (typické pro technický screening na Go pozici) a vzorové odpovědi tak, jak je říct nahlas — strukturovaně, česky s anglickými termíny. Zvláštní důraz na Q1 a Q3. Přidej "věty na pohovor" (jednovětá shrnutí seniority), např.: *"Každá goroutina musí mít garantovanou cestu k ukončení."* / *"Exactly-once neexistuje — dělám at-least-once s idempotentním consumerem."*
 
 ## Workflow pro Claude Code
 
