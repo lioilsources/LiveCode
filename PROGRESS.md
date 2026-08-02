@@ -24,15 +24,21 @@
 - Vytvořen repozitář (struktura dle plánu, go.mod, go 1.26).
 - Lekce 1: `LESSON.md` (recap), 3 examples (handoff, close+range, range-vs-select
   s důkazem leaku přes `runtime.NumGoroutine`), exercise `Producer` + `Sum` s testy.
-- **Otevřeno / příští session začít tady:**
-  1. Ověřit odpověď na kontrolní otázku (range vs. select + nuance `j, ok`).
-  2. Review exercise (`go test -race ./lessons/01-goroutines-channels/exercise/`).
 - Deps (goleak, errgroup, rate) záměrně zatím nepřidány — přidají se v lekcích 3/4/7,
   až budou poprvé potřeba.
 
+### 2026-08-02 — Kontrolní otázka ověřena
+
+- ✅ Mechanismus pochopen: range visí bez close, select má cestu ven přes ctx; fix s `ok` řekl sám.
+- ⚠️ **Drhne (zopakovat příště):**
+  1. Terminologie **leak vs. deadlock** — visící goroutina ≠ deadlock; deadlock = spí všechny → fatal error.
+  2. Mylně: „čtení ze zavřeného channelu spadne" — NE: vrací nulu + ok=false okamžitě
+     (worker se roztočí naprázdno). **Panic je až SEND do zavřeného channelu.**
+- Example 03 spuštěn jako důkaz (NumGoroutine 3 → 2, rangeWorker leaknutý).
+- **Otevřeno: exercise** (`go test -race ./lessons/01-goroutines-channels/exercise/`).
+
 ## Otázky k zopakování (spaced repetition)
 
-1. **(otevřená, neověřená)** Proč může `for j := range jobs` leaknout a `for { select }`
-   ne? Jaká je nuance se čtením po `close`?
-2. Proč channel zavírá producent, a ne consumer?
-3. Co vrátí čtení ze zavřeného channelu? A co udělá čtení z nil channelu?
+1. Visící goroutina na čtení z nikdy nezavřeného channelu — je to deadlock, nebo leak? Proč?
+2. Vyplň tabulku naslepo: receive/send/close × otevřený/zavřený/nil channel. Co panikaří, co blokuje navždy, co vrací hned?
+3. Proč channel zavírá producent, a ne consumer?
