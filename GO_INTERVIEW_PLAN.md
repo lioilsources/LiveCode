@@ -41,6 +41,12 @@ go-interview-prep/
 
 Každá lekce: LESSON.md (výklad + analogie) → 2–3 examples → 1 exercise s testy → 3 kontrolní otázky do PROGRESS.md.
 
+Plán má **dva tracky**, které jdou studovat nezávisle:
+- **Track A — concurrency** (lekce 1–10)
+- **Track B — typový systém** (lekce 11–13): polymorfismus, type assertion, pattern matching, generika
+
+### Track A — concurrency
+
 | # | Lekce | Obsah | Stav |
 |---|-------|-------|------|
 | 1 | Goroutines & channels | goroutiny, un/buffered, close, range, select, deadlocky | ✅ probráno v chatu — jen recap + exercise |
@@ -53,6 +59,20 @@ Každá lekce: LESSON.md (výklad + analogie) → 2–3 examples → 1 exercise 
 | 8 | HTTP služba prakticky | server s graceful shutdown, per-request context, middleware, propagace timeoutů na odchozí volání | ⬜ |
 | 9 | Distribuovaná spolehlivost (teorie k Q3) | idempotency keys, circuit breaker, at-least-once + dedup, outbox, saga — s mini-implementacemi (in-memory) | ⬜ |
 | 10 | Mock interview | 2 úlohy na čas + ústní otázky, review jako interviewer | ⬜ |
+
+### Track B — typový systém
+
+Polymorfismus v Go funguje jinak než v Javě/C# a je to častý zdroj ztráty bodů na
+live codingu. Lekce cílí přesně na to, co se ptá: method sets, typed nil, `errors.Is/As`,
+a rozhodnutí *generika vs. interface*.
+
+| # | Lekce | Obsah | Stav |
+|---|-------|-------|------|
+| 11 | Interfaces & polymorfismus | implicitní splnění, malé interfaces, interface na straně konzumenta, **method sets** (pointer vs. value receiver), interface jako pár (typ, hodnota) → **typed nil**, embedding jako composition | ✅ |
+| 12 | Type assertion & type switch | comma-ok vs. panika, assertion na interface (capability detection), type switch a jeho pasti (víc typů ve větvi, pořadí, chybějící kontrola úplnosti), **`errors.Is` / `errors.As`** + wrapping přes `%w`, sealed interface | ✅ |
+| 13 | Generika | type params a inference, constraints (`comparable`, `cmp.Ordered`, unions, **vlnovka `~`**), generické typy, `var zero T`, metody bez type params, **generika vs. interfaces**, limity (kovariance), `slices`/`maps`/`cmp` | ✅ |
+
+Rychlé opáčko k Tracku B: `cheatsheet/TYPES_CHEATSHEET.md`.
 
 ## Live-coding úlohy (interview/tasks/)
 

@@ -17,6 +17,14 @@
 | 9 | Distribuovaná spolehlivost | ⬜ |
 | 10 | Mock interview | ⬜ |
 
+### Track B — typový systém
+
+| # | Lekce | Stav |
+|---|-------|------|
+| 11 | Interfaces & polymorfismus | 🟡 materiály hotové, **čeká: exercise** |
+| 12 | Type assertion & type switch | 🟡 materiály hotové, **čeká: exercise** |
+| 13 | Generika | 🟡 materiály hotové, **čeká: exercise** |
+
 ## Session log
 
 ### 2026-08-01 — Setup + Lekce 1 zahájena
@@ -37,8 +45,26 @@
 - Example 03 spuštěn jako důkaz (NumGoroutine 3 → 2, rangeWorker leaknutý).
 - **Otevřeno: exercise** (`go test -race ./lessons/01-goroutines-channels/exercise/`).
 
+### 2026-08-04 — Track B založen (lekce 11–13)
+
+- Podnět: live coding drhnul na polymorfismu, type assertion, pattern matchingu a generikách.
+- Vytvořeno: 3 lekce (LESSON.md + 9 examples + 3 exercises s testy) + `cheatsheet/TYPES_CHEATSHEET.md`.
+- Všech 9 examples spuštěno a ověřeno; **cvičení ověřena referenčním řešením** (testy zelené),
+  aby zadání nebylo neřešitelné.
+- Záměrně: testy lekcí 11 a 13 se **nezkompilují**, dokud se kostra nedoplní —
+  hláška kompilátoru (`does not implement`, `possibly missing ~`) je součást výuky.
+- **Otevřeno: 3 exercises Tracku B + pořád exercise lekce 1.**
+
 ## Otázky k zopakování (spaced repetition)
 
+### Track A
 1. Visící goroutina na čtení z nikdy nezavřeného channelu — je to deadlock, nebo leak? Proč?
 2. Vyplň tabulku naslepo: receive/send/close × otevřený/zavřený/nil channel. Co panikaří, co blokuje navždy, co vrací hned?
 3. Proč channel zavírá producent, a ne consumer?
+
+### Track B
+4. Proč `Cat{}` nesplní interface, když má `Speak()` pointer receiver — a co by se pokazilo, kdyby to Go dovolilo?
+5. Funkce vrací `error`, uvnitř `var e *MyErr; return e`. Volající testuje `err != nil`. Co se stane a proč?
+6. Rozdíl `errors.Is` vs. `errors.As`? Proč nestačí `==` a type assertion?
+7. Co dělá `~` v `interface{ ~int | ~float64 }`? Co se pokazí bez ní?
+8. Kdy generika a kdy interface? Dej příklad na obojí.
