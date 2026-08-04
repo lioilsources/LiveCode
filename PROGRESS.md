@@ -55,6 +55,15 @@
   hláška kompilátoru (`does not implement`, `possibly missing ~`) je součást výuky.
 - **Otevřeno: 3 exercises Tracku B + pořád exercise lekce 1.**
 
+### 2026-08-04 (2) — Drilly na psaní (lekce 11)
+
+- Zpětná vazba: **„číst umím, limituje mě psaní"** → přidán `lessons/11-…/drills/`:
+  6 mikro-cvičení z prázdné stránky (interface, polymorfní fn, pointer receiver,
+  typed nil, embedding, func adapter). Ověřeno referenčním řešením — 6× ok.
+- **Metodika pro další lekce: u psacích slabin nedávat víc výkladu, ale drilly**
+  (malé zadání + test, opakovat 2–3× po smazání).
+- Otevřeno: projet drilly 01–06, pak teprve exercise lekce 11.
+
 ## Otázky k zopakování (spaced repetition)
 
 ### Track A

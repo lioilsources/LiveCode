@@ -199,9 +199,22 @@ informaci** a musíš ji dobývat zpátky (type assertion — lekce 12) nebo gen
 
 Spuštění: `go run ./lessons/11-interfaces-polymorphism/examples/03-typed-nil/`
 
+## Drills — pokud tě limituje psaní, ne chápání 🏋️
+
+`drills/` je šest mikro-cvičení z **prázdné stránky** (3 min každé), na svalovou paměť
+syntaxe: deklarace interfacu → polymorfní funkce → pointer receiver → typed nil →
+embedding → funkce jako implementace interfacu.
+
+```bash
+go test ./lessons/11-interfaces-polymorphism/drills/01-interface-basic/
+```
+
+Návod a „5 tvarů do prstů": `drills/README.md`. Smysl mají **až na druhý a třetí
+průchod** — po prvním smaž a piš znovu.
+
 ## Exercise
 
-`exercise/` — zadání v `exercise/README.md`.
+Až tvary padnou do ruky: `exercise/` — zadání v `exercise/README.md`.
 Testy: `go test -race ./lessons/11-interfaces-polymorphism/exercise/`
 
 ## Kontrolní otázky
