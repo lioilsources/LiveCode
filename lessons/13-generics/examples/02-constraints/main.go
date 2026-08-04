@@ -31,8 +31,8 @@ func MaxOf[T cmp.Ordered](a, b T) T {
 
 // ── Union constraint S vlnovkou vs BEZ vlnovky ───────────────────────────────
 
-type WithTilde interface{ ~int | ~float64 }  // "a typy s tímhle základem"
-type NoTilde interface{ int | float64 }      // JEN přesně int / float64
+type WithTilde interface{ ~int | ~float64 } // "a typy s tímhle základem"
+type NoTilde interface{ int | float64 }     // JEN přesně int / float64
 
 type Celsius float64 // vlastní typ, underlying = float64
 
