@@ -41,9 +41,10 @@ go-interview-prep/
 
 Každá lekce: LESSON.md (výklad + analogie) → 2–3 examples → 1 exercise s testy → 3 kontrolní otázky do PROGRESS.md.
 
-Plán má **dva tracky**, které jdou studovat nezávisle:
+Plán má **tři tracky**, které jdou studovat nezávisle:
 - **Track A — concurrency** (lekce 1–10)
 - **Track B — typový systém** (lekce 11–13): polymorfismus, type assertion, pattern matching, generika
+- **Track C — HackerRank** (`hackerrank/`): online screening na čas — algoritmické vzory, I/O, REST API úlohy
 
 ### Track A — concurrency
 
@@ -73,6 +74,22 @@ a rozhodnutí *generika vs. interface*.
 | 13 | Generika | type params a inference, constraints (`comparable`, `cmp.Ordered`, unions, **vlnovka `~`**), generické typy, `var zero T`, metody bez type params, **generika vs. interfaces**, limity (kovariance), `slices`/`maps`/`cmp` | ✅ |
 
 Rychlé opáčko k Tracku B: `cheatsheet/TYPES_CHEATSHEET.md`.
+
+### Track C — HackerRank (online screening)
+
+HackerRank test je jiná disciplína než live coding: sám, na čas, skryté testy,
+stdin/stdout, stuby s `int32`. Cílí na to, co tam v Go stojí body — složitost
+podle constraints, přetečení, bufferované I/O, deterministický výstup z mapy,
+stránkované REST API.
+
+| Část | Obsah | Stav |
+|------|-------|------|
+| `hackerrank/README.md` | formát testu, Go stub, strategie na 90 min, tabulka pastí, checklist | ✅ |
+| `cheatsheet/ALGO_CHEATSHEET.md` | I/O kostra, mapa, sort s víc klíči, two pointers, window, prefix sums, stack, binary search, BFS, DP, REST API | ✅ |
+| `hackerrank/drills/` | 8 mikro-drillů na vzory (prázdný soubor + test hlídající složitost) | ✅ |
+| `hackerrank/tasks/` | 8 úloh ve formátu HackerRanku (EN zadání, constraints, sample I/O, kostra, testy, `solution/`) | ✅ |
+
+Metodika stejná jako drilly lekce 11: psát z prázdné stránky, smazat, opakovat.
 
 ## Live-coding úlohy (interview/tasks/)
 

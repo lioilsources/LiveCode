@@ -25,6 +25,15 @@
 | 12 | Type assertion & type switch | 🟡 materiály hotové, **čeká: exercise** |
 | 13 | Generika | 🟡 materiály hotové, **čeká: exercise** |
 
+### Track C — HackerRank
+
+| # | Část | Stav |
+|---|------|------|
+| C0 | `hackerrank/README.md` — formát testu, strategie, Go pasti | ✅ |
+| C1 | `cheatsheet/ALGO_CHEATSHEET.md` — vzory naslepo | ✅ |
+| C2 | `hackerrank/drills/` — 8 drillů (I/O, mapa, two pointers, window, prefix, sort, stack, BFS) | 🟡 materiály hotové, **čeká: projet 3×** |
+| C3 | `hackerrank/tasks/` — 8 úloh na čas + `solution/` | 🟡 materiály hotové, **čeká: řešit se stopkami** |
+
 ## Session log
 
 ### 2026-08-01 — Setup + Lekce 1 zahájena
@@ -64,6 +73,25 @@
   (malé zadání + test, opakovat 2–3× po smazání).
 - Otevřeno: projet drilly 01–06, pak teprve exercise lekce 11.
 
+### 2026-09-30 — Track C založen (HackerRank screening pro EverPure)
+
+- Podnět: první kolo u EverPure je HackerRank — jiná disciplína než live coding
+  (sám, na čas, skryté testy, stdin/stdout, `int32` stuby).
+- Vytvořeno: `hackerrank/README.md` (jak test vypadá, strategie na 90 min,
+  tabulka Go pastí, checklist), `cheatsheet/ALGO_CHEATSHEET.md`,
+  8 drillů (styl lekce 11: prázdný soubor + test, testy hlídají i složitost
+  přes 10^6 vstup), 8 úloh ve formátu HackerRanku (zadání EN, constraints,
+  sample I/O, kostra, testy jako skryté testy, `solution/` s kopií testů).
+- Ověřeno: drilly 8/8 zelené s referenčním řešením (soubory vráceny do prázdna),
+  úlohy 8/8 zelené v `solution/`; kostry se kompilují a padají (na rozdíl od
+  drillů — zadání úloh má být čitelné bez hlášek kompilátoru).
+- Úloha 07 (REST API se stránkováním) a 08 (prázdný `main`, bufferovaný výstup)
+  cílí na backendový HackerRank, ne na algoritmy — tam se ztrácí body zbytečně.
+- **Doporučený plán do testu:** den 1 cheatsheet + drilly 1×; den 2 drilly 2×
+  + úlohy 01–04 se stopkami; den 3 úlohy 05–08; den před testem drilly naslepo,
+  nic nového.
+- **Otevřeno: drilly C2 (3 kola), úlohy C3.** Track A/B exercises pořád otevřené.
+
 ## Otázky k zopakování (spaced repetition)
 
 ### Track A
@@ -77,3 +105,10 @@
 6. Rozdíl `errors.Is` vs. `errors.As`? Proč nestačí `==` a type assertion?
 7. Co dělá `~` v `interface{ ~int | ~float64 }`? Co se pokazí bez ní?
 8. Kdy generika a kdy interface? Dej příklad na obojí.
+
+### Track C
+9. Constraints říkají `n ≤ 10^5`. Jakou složitost cílíš a proč je `O(n²)` mimo?
+10. `arr []int32`, hodnoty až `2^31-1`, počítáš `arr[i] + k`. Co se stane a jak to napíšeš správně?
+11. Proč `for k := range m` nemůže rovnou tisknout výstup? Co uděláš místo toho?
+12. Napiš zpaměti I/O kostru: čtení `n` čísel ze stdin + bufferovaný výstup. Co se stane bez `Flush()`?
+13. Stránkované API vrací `total_pages: 0`. Co udělá tvůj cyklus?
