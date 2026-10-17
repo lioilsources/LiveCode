@@ -39,13 +39,13 @@ Jeden den = jedna lekce ≈ 2–3 h. Každá lekce: `LESSON.md` → `examples/`
 
 | Den | Lekce | Obsah | Stav |
 |---|---|---|---|
-| D1 | [TS pro Go vývojáře](lessons/D1-ts-basics/LESSON.md) | structural typing, `type` vs `interface`, union + narrowing, discriminated union + `never`, `unknown`/`any`, `null`/`undefined`, třídy + parameter properties, **typy za běhu neexistují** | ⬜ |
-| D2 | [Generika, utility types, chyby](lessons/D2-generics-utility-errors/LESSON.md) | generika + constraints + `keyof`, `Partial/Pick/Omit/Record`, type guards `x is T`, `satisfies`, `as const`, chyby (custom `Error`, `unknown` v catch, Result), kolekce: `Map`/`Set`, `sort` past, `for…of` vs `for…in` | ⬜ |
-| D3 | [Async & Node runtime](lessons/D3-async-node/LESSON.md) | event loop, microtask vs macrotask, Promise, `all/allSettled/race/any`, **concurrency limit**, `AbortController` jako context, timeout, retry + backoff, `await` ve smyčce, blokování event loopu | ⬜ |
-| D4 | [NestJS základy](lessons/D4-nest-basics/LESSON.md) | modul, controller, provider, **DI**, custom providers (`useValue/useFactory/useClass`, tokeny), DTO + `class-validator` + `ValidationPipe`, built-in pipes, `HttpException`, CRUD | ⬜ |
-| D5 | [Nest request pipeline](lessons/D5-nest-pipeline/LESSON.md) | middleware → guard → interceptor → pipe → handler → interceptor → filter; auth guard, custom decorator, logging/transform interceptor, exception filter, config, lifecycle hooks | ⬜ |
-| D6 | [Testování & data](lessons/D6-testing-data/LESSON.md) | unit testy s `Test.createTestingModule`, mocky (`jest.fn`, `overrideProvider`), e2e přes `supertest`, repository pattern, stránkování a query DTO, TypeORM/Prisma do hovoru | ⬜ |
-| D7 | Mock interview | 2 úlohy z [`tasks/`](tasks/README.md) na čas + [`interview/THEORY_QA.md`](interview/THEORY_QA.md) + [`interview/GOTCHAS.md`](interview/GOTCHAS.md) | ⬜ |
+| D1 | [TS pro Go vývojáře](lessons/D1-ts-basics/LESSON.md) | structural typing, `type` vs `interface`, union + narrowing, discriminated union + `never`, `unknown`/`any`, `null`/`undefined`, třídy + parameter properties, **typy za běhu neexistují** | 🟡 |
+| D2 | [Generika, utility types, chyby](lessons/D2-generics-utility-errors/LESSON.md) | generika + constraints + `keyof`, `Partial/Pick/Omit/Record`, type guards `x is T`, `satisfies`, `as const`, chyby (custom `Error`, `unknown` v catch, Result), kolekce: `Map`/`Set`, `sort` past, `for…of` vs `for…in` | 🟡 |
+| D3 | [Async & Node runtime](lessons/D3-async-node/LESSON.md) | event loop, microtask vs macrotask, Promise, `all/allSettled/race/any`, **concurrency limit**, `AbortController` jako context, timeout, retry + backoff, `await` ve smyčce, blokování event loopu | 🟡 |
+| D4 | [NestJS základy](lessons/D4-nest-basics/LESSON.md) | modul, controller, provider, **DI**, custom providers (`useValue/useFactory/useClass`, tokeny), DTO + `class-validator` + `ValidationPipe`, built-in pipes, `HttpException`, CRUD | 🟡 |
+| D5 | [Nest request pipeline](lessons/D5-nest-pipeline/LESSON.md) | middleware → guard → interceptor → pipe → handler → interceptor → filter; auth guard, custom decorator, logging/transform interceptor, exception filter, config, lifecycle hooks | 🟡 |
+| D6 | [Testování & data](lessons/D6-testing-data/LESSON.md) | unit testy s `Test.createTestingModule`, mocky (`jest.fn`, `overrideProvider`), e2e přes `supertest`, repository pattern, stránkování a query DTO, TypeORM/Prisma do hovoru | 🟡 |
+| D7 | Mock interview | 2 úlohy z [`tasks/`](tasks/README.md) na čas + [`interview/THEORY_QA.md`](interview/THEORY_QA.md) + [`interview/GOTCHAS.md`](interview/GOTCHAS.md) | 🟡 |
 
 Rychlé opáčko kdykoli: [`cheatsheet/TS_NEST_CHEATSHEET.md`](cheatsheet/TS_NEST_CHEATSHEET.md).
 
@@ -55,12 +55,22 @@ Rychlé opáčko kdykoli: [`cheatsheet/TS_NEST_CHEATSHEET.md`](cheatsheet/TS_NES
 cd ts
 npm install
 
-npx tsx lessons/D1-ts-basics/examples/01-structural-typing.ts   # spustit ukázku
+npx tsx lessons/D1-ts-basics/examples/01-structural-typing.ts   # ukázka D1–D3 (bez Nest DI)
+npm run ex:nest lessons/D4-nest-basics/examples/01-module-controller-service.ts  # ukázka D4–D5
+npx jest lessons/D6-testing-data/examples                        # ukázky D6 jsou testy
 npx jest lessons/D1-ts-basics/drills/01                          # jeden drill
 npx jest lessons/D1-ts-basics                                    # celá lekce
 npx jest tasks/01-todo-crud/solution                             # vzorové řešení úlohy
 npm run typecheck                                                # tsc --noEmit nad vším
 ```
+
+> **Proč Nest ukázky ne přes `tsx`:** esbuild neemituje decorator metadata →
+> Nest DI tiše injektuje `undefined` a první request spadne na 500. `ts-node`
+> i `ts-jest` metadata emitují. (Dobrá otázka na pohovor: „proč Nest potřebuje
+> `emitDecoratorMetadata`?")
+>
+> `npm run typecheck` hlásí chyby v `drills/*/drill.test.ts`, dokud jsou drilly
+> prázdné — to je záměr. Jinde musí být čisto.
 
 Verze: Node 22, TypeScript 6, **NestJS 11** (CommonJS — to, co reálně běží ve
 firmách; Nest 12 je ESM-only), Jest 30 + ts-jest, supertest.

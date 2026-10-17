@@ -34,6 +34,18 @@
 | C2 | `hackerrank/drills/` — 8 drillů (I/O, mapa, two pointers, window, prefix, sort, stack, BFS) | 🟡 materiály hotové, **čeká: projet 3×** |
 | C3 | `hackerrank/tasks/` — 8 úloh na čas + `solution/` | 🟡 materiály hotové, **čeká: řešit se stopkami** |
 
+### Track D — TypeScript + NestJS (`ts/`, týden před live codingem)
+
+| Den | Lekce | Stav |
+|---|---|---|
+| D1 | TS pro Go vývojáře | 🟡 materiály hotové, **čeká: drilly + exercise** |
+| D2 | Generika, utility types, chyby | 🟡 materiály hotové, **čeká: drilly + exercise** |
+| D3 | Async & Node runtime | 🟡 materiály hotové, **čeká: drilly + exercise** |
+| D4 | NestJS základy | 🟡 materiály hotové, **čeká: drilly + exercise** |
+| D5 | Nest request pipeline | 🟡 materiály hotové, **čeká: drilly + exercise** |
+| D6 | Testování & data | 🟡 materiály hotové, **čeká: drilly + exercise** |
+| D7 | Mock interview (`ts/tasks/` 8 úloh, `ts/interview/`) | 🟡 materiály hotové, **čeká: řešit se stopkami** |
+
 ## Session log
 
 ### 2026-08-01 — Setup + Lekce 1 zahájena
@@ -92,6 +104,24 @@
   nic nového.
 - **Otevřeno: drilly C2 (3 kola), úlohy C3.** Track A/B exercises pořád otevřené.
 
+### 2026-10-17 — Track D založen (TypeScript + NestJS)
+
+- Podnět: další live coding u firmy s TS/Node.js jako hlavním backendem; v live
+  codingu nejspíš TS + NestJS. Plán: týden, 1 lekce denně (`ts/README.md`).
+- Setup `ts/`: Node 22, TypeScript 6, **NestJS 11** (Nest 12 je ESM-only — firmy
+  jedou na 10/11), Jest 30 + ts-jest, supertest, class-validator.
+- Vytvořeno: 6 lekcí (LESSON.md + examples + 6 drillů + exercise), 8 úloh na čas
+  se `solution/`, `ts/interview/THEORY_QA.md` (16 otázek), `GOTCHAS.md` (15 „co to
+  vypíše"), `ts/cheatsheet/TS_NEST_CHEATSHEET.md`.
+- Ověřeno: drilly a exercises referenčním řešením (pak vráceny do prázdna/kostry),
+  všechna `solution/` 150/150 zelená, 16 examples spuštěno, `tsc` čisté mimo
+  prázdné drilly.
+- Zjištění: Nest examples nejdou přes `tsx` (esbuild neemituje decorator metadata
+  → DI injektuje `undefined`) → `npm run ex:nest` (ts-node).
+- **Doporučený plán:** D1–D6 po dni (výklad 30 min, drilly 2 kola, exercise);
+  D7 úlohy 01 + 02 se stopkami, pak THEORY_QA nahlas. Den před pohovorem:
+  cheatsheet sekce 6–9 naslepo, úloha 01 ještě jednou, nic nového.
+
 ## Otázky k zopakování (spaced repetition)
 
 ### Track A
@@ -112,3 +142,16 @@
 11. Proč `for k := range m` nemůže rovnou tisknout výstup? Co uděláš místo toho?
 12. Napiš zpaměti I/O kostru: čtení `n` čísel ze stdin + bufferovaný výstup. Co se stane bez `Flush()`?
 13. Stránkované API vrací `total_pages: 0`. Co udělá tvůj cyklus?
+
+### Track D
+14. Proč projde `const u: UserId = new OrderId('x')` a jak tomu zabráníš (branded type)?
+15. Proč se DTO v Nestu píše jako `class`, ne `interface`? Co se stane, když klient pošle `{ "age": "abc" }`?
+16. `[10, 1, 5, 100].sort()` — co vrátí a co udělá s polem? Napiš řazení podle `score` desc, pak `name` asc, bez mutace.
+17. `await Promise.all(urls.map(u => fetch(u)))`, třetí fetch selže. Co je s ostatními a jak docílit `errgroup.WithContext`?
+18. Proč `next++` v `mapWithConcurrency` nepotřebuje mutex? Kde v Node race condition vzniknout může?
+19. Co vypíše `setTimeout(A,0); Promise.resolve().then(B); (async()=>{C; await null; D})(); E`?
+20. Proč DI nefunguje s parametrem typu `interface`? Co místo toho (abstract class / Symbol + `@Inject`)?
+21. `@Param('id') id: number` a `map.get(id)` vrací vždy `undefined`. Proč? Dvě opravy.
+22. Nakresli M → G → I → P → H → I → F. Kde vzniká 401 a kde 403? Proč je `APP_GUARD` lepší než `useGlobalGuards(new X())`?
+23. E2E test pustí nevalidní email jako 201, produkce vrací 400. Příčina a trvalá oprava?
+

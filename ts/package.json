@@ -8,7 +8,7 @@
     "test:watch": "jest --watch",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "ex": "tsx",
-    "ex:nest": "ts-node --transpile-only"
+    "ex:nest": "ts-node --transpile-only -O '{\"rootDir\":\".\"}'"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.0",
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@nestjs/testing": "^11.1.0",
+    "@types/express": "^5.0.6",
     "@types/jest": "^30.0.0",
     "@types/node": "^22.0.0",
     "@types/supertest": "^7.2.1",
