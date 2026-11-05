@@ -46,6 +46,14 @@
 | D6 | Testování & data | 🟡 materiály hotové, **čeká: drilly + exercise** |
 | D7 | Mock interview (`ts/tasks/` 8 úloh, `ts/interview/`) | 🟡 materiály hotové, **čeká: řešit se stopkami** |
 
+### Track E — psaní na čas a stručnost (`TRAINING_PLAN.md`, 14 dní od 6. 11.)
+
+| # | Část | Stav |
+|---|------|------|
+| E1 | `fundamentals/` — 10 drillů na základy (reverse, dedup, two sum, merge…) | 🟡 materiály hotové, **čeká: kolo 1** |
+| E2 | `interview/CONCISE_ANSWERS.md` — 12 otázek, odpověď do 30 s | 🟡 materiály hotové, **čeká: trénink nahlas** |
+| E3 | Mock 1 (den 7) a Mock 2 (den 14) | ⬜ |
+
 ## Session log
 
 ### 2026-08-01 — Setup + Lekce 1 zahájena
@@ -122,6 +130,29 @@
   D7 úlohy 01 + 02 se stopkami, pak THEORY_QA nahlas. Den před pohovorem:
   cheatsheet sekce 6–9 naslepo, úloha 01 ještě jednou, nic nového.
 
+### 2026-11-03 — Apify live coding
+
+- Ráno 3 h příprava: tabulka channel operací, leak vs. deadlock, TS nalejvárna
+  (promise pool, `const`/`let`, `?.`/`??` vs `||`, `===`).
+- Na pohovoru úloha „otoč pole" v Go. **Logika indexů správně**
+  (`len-1-i`, ověřeno na malých příkladech), ale:
+  - syntaxe z Javy/C: `int[]`, `length()`, `for (int i=0; ...)`, `var x :=`, `res[i] := ...`
+  - `return numbers` místo `return res`
+  - zbytečný speciální případ pro `len == 1`
+- Navazující otázky (in-place, složitost) zodpovězeny, ale složitost paměti
+  in-place verze řečena jako „N" místo O(1). Čas a paměť se slily dohromady.
+
+### 2026-11-05 — Zpětná vazba Apify + Track E založen
+
+- Feedback: *„passion for building with AI came through… needed more in hands-on
+  coding fundamentals, exercise wasn't completed within the time, and in keeping
+  answers focused and concise."*
+- Vytvořeno: `fundamentals/` (10 drillů, prázdná zadání + testy, ověřeno
+  referenčním řešením, které v repu není), `interview/CONCISE_ANSWERS.md`
+  (vzorec odpověď, důvod, stop + 12 otázek), `TRAINING_PLAN.md` (14 dní, denní blok
+  60 min, mock v den 7 a 14, log).
+- **Otevřeno: celý Track E.** Den 1 = pá 6. 11.
+
 ## Otázky k zopakování (spaced repetition)
 
 ### Track A
@@ -155,3 +186,7 @@
 22. Nakresli M → G → I → P → H → I → F. Kde vzniká 401 a kde 403? Proč je `APP_GUARD` lepší než `useGlobalGuards(new X())`?
 23. E2E test pustí nevalidní email jako 201, produkce vrací 400. Příčina a trvalá oprava?
 
+### Track E
+24. Otočení pole do nového slice: čas? paměť? A na místě? Řekni to dvěma větami.
+25. Proč je in-place reverse O(n), když udělá jen n/2 kroků?
+26. Odpověz do 30 s: „Jak omezíš počet souběžných goroutin?" Byla první věta odpověď?
